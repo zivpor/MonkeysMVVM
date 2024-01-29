@@ -53,6 +53,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\MonkeyPage.xaml.cs">
+	    <DependentUpon>MonkeyPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\MonkeyPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\ShowMonkeyView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

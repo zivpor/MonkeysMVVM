@@ -3,30 +3,36 @@
     x:Class="MonkeysMVVM.Views.ShowMonkeyView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="ShowMonkeyView">
-    <VerticalStackLayout>
+    xmlns:viewmodel="clr-namespace:MonkeysMVVM.ViewModels"
+    Title="ShowMonkeyView"
+    x:DataType="viewmodel:ShowMonkeyViewModel">
+    <VerticalStackLayout Margin="20">
         <Label
             HorizontalOptions="Center"
-            Text="Monkey Name"
+            Text="{Binding Name}"
             VerticalOptions="Center" />
         <Label
             HorizontalOptions="Center"
-            Text="Monkey Location"
+            Text="{Binding Location}"
             VerticalOptions="Center" />
         <Grid
             Margin="15"
             BackgroundColor="Gray"
             RowDefinitions="*,*"
             RowSpacing="5">
-            <Image HeightRequest="200" />
+            <Image
+                HeightRequest="200"
+                Source="{Binding ImageUrl}"
+                WidthRequest="200" />
             <Button
                 Grid.Row="1"
                 Margin="10"
+                Command="{Binding ShowMonkeyImage}"
                 HeightRequest="100"
                 Text="Show Image"
                 WidthRequest="200" />
         </Grid>
-        <Button Text="Get Monkey" />
+        <Button Command="{Binding ShowMonkeyCommand}" Text="Get Monkey" />
 
     </VerticalStackLayout>
 </ContentPage>

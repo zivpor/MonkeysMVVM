@@ -1,4 +1,5 @@
-﻿using MonkeysMVVM.Models;
+﻿
+using MonkeysMVVM.Models;
 using MonkeysMVVM.Services;
 using System;
 using System.Collections.Generic;
@@ -7,22 +8,15 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace MonkeysMVVM.ViewModels
 {
-    public class ShowMonkeyViewModel:INotifyPropertyChanged
+    public class ShowMonkeyViewModel:ViewModel
     {
-        #region INotifyPropertyChanged
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        #endregion
-
+        Monkey monkey;
+        public ICommand ShowMonkeyCommand { get; set; }
+        public ICommand ShowMonkeyImage { get; set; }   
         private string name;
         public string Name 
         { 
@@ -54,10 +48,31 @@ namespace MonkeysMVVM.ViewModels
                 OnPropertyChanged();
             }
         }
+        public ShowMonkeyViewModel()
+        {
+            ShowMonkeyCommand = new Command(GetMonkey);
+            ShowMonkeyImage = new Command(ShowImage);//new Command(()=>{if (monkey != null)ImageUrl = monkey.ImageUrl;)}
 
-      
+        }
 
-     
-        
+        private void GetMonkey()
+        {
+            MonkeysService service = new MonkeysService();
+            monkey = service.GetRandomMonkey();
+            if (monkey != null)
+            {
+                Name=monkey.Name;
+                Location=monkey.Location;
+              //  ((Command)ShowMonkeyCommand).ChangeCanExecute();
+            }
+        }
+
+        private void ShowImage()
+        {
+            if (monkey != null)
+                ImageUrl=monkey.ImageUrl;   
+
+
+        }
     }
 }

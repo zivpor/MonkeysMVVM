@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MonkeysMVVM.Views.ShowMonkeyView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="ShowMonkeyView">
+    <VerticalStackLayout>
+        <Label
+            HorizontalOptions="Center"
+            Text="Monkey Name"
+            VerticalOptions="Center" />
+        <Label
+            HorizontalOptions="Center"
+            Text="Monkey Location"
+            VerticalOptions="Center" />
+        <Grid
+            Margin="15"
+            BackgroundColor="Gray"
+            RowDefinitions="*,*"
+            RowSpacing="5">
+            <Image HeightRequest="200" />
+            <Button
+                Grid.Row="1"
+                Margin="10"
+                HeightRequest="100"
+                Text="Show Image"
+                WidthRequest="200" />
+        </Grid>
+        <Button Text="Get Monkey" />
+
+    </VerticalStackLayout>
+</ContentPage>

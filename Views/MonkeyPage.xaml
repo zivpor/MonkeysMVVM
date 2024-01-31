@@ -25,8 +25,6 @@
             </Label.FormattedText>
         </Label>
         <Label HorizontalOptions="Center" Text="{Binding Name}" />
-        <Border HeightRequest="200">
-            <Image Source="{Binding ImageUrl}" />
-        </Border>
+        <Image Source="{Binding ImageUrl}" />
     </VerticalStackLayout>
 </ContentPage>
